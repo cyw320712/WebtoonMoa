@@ -1,4 +1,4 @@
-package skku.swcoaching.domain;
+package skku.swcoaching.domain.webtoon;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -29,5 +29,6 @@ public class Tag {
         inverseJoinColumns = @JoinColumn(name = "webtoon_id")
     )
     private List<Webtoon> webtoons = new ArrayList<>();
+    // 꼭 추가해야되는 필드인지 여쭤보기..
 
 }

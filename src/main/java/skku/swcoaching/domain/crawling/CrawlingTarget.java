@@ -1,7 +1,9 @@
-package skku.swcoaching.domain;
+package skku.swcoaching.domain.crawling;
 
 import lombok.Getter;
 import lombok.Setter;
+import skku.swcoaching.domain.webtoon.Day;
+import skku.swcoaching.domain.webtoon.Webtoon;
 
 import javax.persistence.*;
 
@@ -25,9 +27,11 @@ public class CrawlingTarget {
 
     private String name; // 수집 데이터 명
     private CrawlingType type; // 수집 데이터 타입
+    private Day updateDate; // 업데이트 되는 요일
 
     private String url; // 크롤링 좌표
     private String xpath; // 크롤링 xpath (DOM)
+    private String platform;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "webtoon_id")

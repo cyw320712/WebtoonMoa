@@ -1,12 +1,10 @@
-package skku.swcoaching.domain;
+package skku.swcoaching.domain.webtoon;
 
-import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import skku.swcoaching.domain.crawling.CrawlingTarget;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,10 +17,11 @@ public class Webtoon {
     @Column(name = "webtoon_id")
     private Long id;
 
-    private String title;
+    private String title; // 웹툰 제목
     private String thumbnail; // 이미지가 저장된 경로?
-    private String writer;
-    private LocalDateTime updateDate;
+    private String writer; // 웹툰 작가
+    private Day updateDate; // 업데이트 요일
+    private String platform; // 플랫폼
 
     @ManyToMany(mappedBy = "webtoons")
     private List<Tag> tags = new ArrayList<>();
@@ -30,21 +29,21 @@ public class Webtoon {
     @OneToMany(mappedBy = "webtoon", cascade = CascadeType.ALL)
     private List<CrawlingTarget> crawlingTargets = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="platform_id")
-    private Platform platform;
-
     public void addTag(Tag tag){
         tags.add(tag);
     }
 
-    public static Webtoon makeWebtoon(String title, String thumbnail, String writer, LocalDateTime updateDate, Tag... tags){
+    public static Webtoon makeWebtoon(String title, String thumbnail, String writer, Day updateDate, Tag... tags){
         Webtoon webtoon = new Webtoon();
 
         webtoon.setTitle(title);
         webtoon.setThumbnail(thumbnail);
         webtoon.setWriter(writer);
         webtoon.setUpdateDate(updateDate);
+        if (tags.length == 0){
+            Tag defaultTag = new Tag("All");
+            webtoon.addTag(defaultTag);
+        }
         for (Tag tag : tags){
             webtoon.addTag(tag);
         }
