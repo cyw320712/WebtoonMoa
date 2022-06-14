@@ -31,7 +31,6 @@ public class CrawlingTarget {
 
     private String url; // 크롤링 좌표
     private String xpath; // 크롤링 xpath (DOM)
-    private String platform;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "webtoon_id")
