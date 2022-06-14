@@ -1,5 +1,6 @@
 package skku.swcoaching.domain.webtoon;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import skku.swcoaching.domain.crawling.CrawlingTarget;
@@ -22,6 +23,7 @@ public class Webtoon {
     private String writer; // 웹툰 작가
     private Day updateDate; // 업데이트 요일
     private String platform; // 플랫폼
+    private String url; // 접속 가능한 url
 
     @ManyToMany(mappedBy = "webtoons")
     private List<Tag> tags = new ArrayList<>();
