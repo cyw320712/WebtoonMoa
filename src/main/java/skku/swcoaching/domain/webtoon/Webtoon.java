@@ -2,6 +2,7 @@ package skku.swcoaching.domain.webtoon;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import skku.swcoaching.domain.crawling.CrawlingTarget;
 
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
+@NoArgsConstructor
 public class Webtoon {
 
     @Id
@@ -35,21 +37,20 @@ public class Webtoon {
         tags.add(tag);
     }
 
-    public static Webtoon makeWebtoon(String title, String thumbnail, String writer, Day updateDate, Tag... tags){
+    public Webtoon(String title, String thumbnail, String writer, Day updateDate, String platform, String url, List<Tag> tags){
         Webtoon webtoon = new Webtoon();
-
         webtoon.setTitle(title);
         webtoon.setThumbnail(thumbnail);
         webtoon.setWriter(writer);
         webtoon.setUpdateDate(updateDate);
-        if (tags.length == 0){
+        webtoon.setPlatform(platform);
+        webtoon.setUrl(url);
+        if (tags.size() == 0){
             Tag defaultTag = new Tag("All");
             webtoon.addTag(defaultTag);
         }
         for (Tag tag : tags){
             webtoon.addTag(tag);
         }
-
-        return webtoon;
     }
 }
