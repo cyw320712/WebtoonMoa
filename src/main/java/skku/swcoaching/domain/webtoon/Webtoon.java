@@ -21,7 +21,7 @@ public class Webtoon {
     private Long id;
 
     private String title; // 웹툰 제목
-    private String thumbnail; // 이미지가 저장된 경로?
+    private String thumbnail; // 이미지가 저장된 url (계속 바뀔 수도 있음)
     private String writer; // 웹툰 작가
     private Day updateDate; // 업데이트 요일
     private String platform; // 플랫폼
