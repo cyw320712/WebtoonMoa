@@ -2,11 +2,11 @@ package skku.swcoaching.repository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import skku.swcoaching.domain.webtoon.Day;
 import skku.swcoaching.domain.webtoon.Webtoon;
 import skku.swcoaching.domain.webtoon.WebtoonSearch;
 
 import javax.persistence.EntityManager;
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +43,7 @@ public class WebtoonRepository {
         return ResultList;
     }
 
-    public List<Webtoon> findDay(Day day, int start){
+    public List<Webtoon> findDay(DayOfWeek day, int start){
         // 요일 별로 가져오기
         return em.createQuery("select w from Webtoon w where w.updateDate = :day", Webtoon.class)
                 .setParameter("day", day)

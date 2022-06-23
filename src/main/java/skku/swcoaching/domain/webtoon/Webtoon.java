@@ -7,6 +7,7 @@ import lombok.Setter;
 import skku.swcoaching.domain.crawling.CrawlingTarget;
 
 import javax.persistence.*;
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class Webtoon {
     private String title; // 웹툰 제목
     private String thumbnail; // 이미지가 저장된 url (계속 바뀔 수도 있음)
     private String writer; // 웹툰 작가
-    private Day updateDate; // 업데이트 요일
+    private DayOfWeek updateDate; // 업데이트 요일
     private String platform; // 플랫폼
     private String url; // 접속 가능한 url
 
@@ -37,7 +38,7 @@ public class Webtoon {
         tags.add(tag);
     }
 
-    public Webtoon(String title, String thumbnail, String writer, Day updateDate, String platform, String url, List<Tag> tags){
+    public Webtoon(String title, String thumbnail, String writer, DayOfWeek updateDate, String platform, String url, List<Tag> tags){
         Webtoon webtoon = new Webtoon();
         webtoon.setTitle(title);
         webtoon.setThumbnail(thumbnail);

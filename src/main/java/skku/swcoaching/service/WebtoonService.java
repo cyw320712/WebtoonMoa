@@ -3,12 +3,12 @@ package skku.swcoaching.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import skku.swcoaching.domain.webtoon.Day;
 import skku.swcoaching.domain.webtoon.Webtoon;
 import skku.swcoaching.domain.webtoon.WebtoonSearch;
 import skku.swcoaching.dto.WebtoonDto;
 import skku.swcoaching.repository.WebtoonRepository;
 
+import java.time.DayOfWeek;
 import java.util.List;
 
 @Service
@@ -47,7 +47,7 @@ public class WebtoonService {
     /**
      * 요일별 웹툰 조회
      */
-    public List<Webtoon> searchWebtoonForToday(Day day, int page){
+    public List<Webtoon> searchWebtoonForToday(DayOfWeek day, int page){
         return webtoonRepository.findDay(day, page);
     }
 
