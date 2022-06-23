@@ -3,7 +3,6 @@ package skku.swcoaching.repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import skku.swcoaching.domain.crawling.CrawlingTarget;
-import skku.swcoaching.domain.webtoon.Day;
 import skku.swcoaching.domain.webtoon.Webtoon;
 
 import javax.persistence.EntityManager;
@@ -15,7 +14,12 @@ public class CrawlingRepository {
     private final EntityManager em;
 
     public void save(CrawlingTarget crawlingTarget){
-        em.persist(crawlingTarget);
+        if (crawlingTarget.getId() == null){
+            em.persist(crawlingTarget);
+        }
+        else {
+            em.merge(crawlingTarget);
+        }
     }
 
     public CrawlingTarget findOne(Long id) {
