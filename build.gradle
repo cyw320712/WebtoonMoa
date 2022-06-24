@@ -6,7 +6,7 @@ plugins {
 
 group = 'skku'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '17'
 
 repositories {
 	mavenCentral()
@@ -21,11 +21,23 @@ dependencies {
 	implementation 'junit:junit'
 
 	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'mysql:mysql-connector-java'
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	annotationProcessor 'org.projectlombok:lombok'
+	testAnnotationProcessor "org.projectlombok:lombok"
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+task startDocker(type: Exec) {
+	workingDir "./infra"
+	commandLine 'docker-compose', 'down'
+	commandLine 'docker-compose', 'up', '-d', '--remove-orphans'
+}
+
+task stopDocker(type: Exec) {
+	workingDir "./infra"
+	commandLine 'docker-compose', 'down'
 }
