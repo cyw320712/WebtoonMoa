@@ -15,8 +15,10 @@
     <div class = "jumbotron">
         <form th:object="${webtoonSearch}" class="flex-column" method="post" action="">
             <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-                <div class = "btn-group-sm mr-2" role="group" aria-label="First group">
-                    요일:
+                <div class = "form-group mx-sm-1 mb-2" role="group" aria-label="First group" style="display: flex; flex-direction: row; justify-content: space-between; width:100%">
+                    <div class="badge badge-primary text-wrap" style="width: 6rem; align-items: center;">
+                        요일
+                    </div>
                     <button th:if="${dayOfWeek != 1}" class="btn btn-secondary" type="button" onclick="location.href='/1'">월</button>
                     <button th:if="${dayOfWeek == 1}" class="btn btn-secondary btn-danger" type="button" onclick="location.href='/1'">월</button>
                     <button th:if="${dayOfWeek != 2}" class="btn btn-secondary" type="button" onclick="location.href='/2'">화</button>
@@ -33,11 +35,13 @@
                     <button th:if="${dayOfWeek == 7}" class="btn btn-secondary btn-danger" type="button" onclick="location.href='/7'">일</button>
                 </div>
             </div>
-            <div class="form-group mx-sm-1 mb-2 justify-content-between">
-                태그:
-                <div th:each="tag : ${tags}" class="form-check">
+            <div class="form-group mx-sm-1 mb-2" style="display: flex; flex-direction: row; justify-content: space-between;">
+                <div class="badge badge-primary text-wrap" style="width: 6rem;">
+                    태그:
+                </div>
+                <div th:each="tag : ${tags}" class="form-check" style="width: 6rem; background-color: #007bff;">
                     <input type="checkbox" th:field="*{tags}" th:value="${tag.name}" class="form-check-input">
-                    <label th:for="${#ids.prev('tags')}" th:text="${tag.name}"  class="form-check-label"></label>
+                    <label th:for="${#ids.prev('tags')}" th:text="${tag.name}"  class="form-check-label" style="color: white;"></label>
                 </div>
             </div>
             <div class="flex-row">
