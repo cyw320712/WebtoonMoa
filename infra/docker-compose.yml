@@ -5,6 +5,8 @@ services:
     image: mariadb:10.6.8
     ports:
       - '3306:3306'
+    volumes:
+      - ./db/conf.d:/etc/mysql/conf.d
     environment:
       - MARIADB_REPLICATION_MODE=master
       - MARIADB_REPLICATION_USER=repl_user
