@@ -14,7 +14,7 @@ import java.util.List;
 public class WebtoonDto {
     private String title;
     private String writer;
-    private String thumbnail;
+    private String thumbnailUrl;
     private DayOfWeek updateDate;
     private String platform;
     private String url;
@@ -23,7 +23,7 @@ public class WebtoonDto {
     public WebtoonDto(Webtoon webtoon){
         this.title = webtoon.getTitle();
         this.writer = webtoon.getWriter();
-        this.thumbnail = webtoon.getThumbnail();
+        this.thumbnailUrl = webtoon.getThumbnailUrl();
         this.updateDate = webtoon.getUpdateDate();
         this.platform = webtoon.getPlatform();
         this.url = webtoon.getUrl();
@@ -31,6 +31,6 @@ public class WebtoonDto {
     }
 
     public Webtoon toEntity(){
-        return new Webtoon(title, writer, thumbnail, updateDate, platform, url, tags);
+        return new Webtoon(title, writer, thumbnailUrl, updateDate, platform, url, tags);
     }
 }

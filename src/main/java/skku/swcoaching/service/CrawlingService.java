@@ -59,7 +59,7 @@ public class CrawlingService {
 
         driver.get(targetUrl);
         String changeThumbnailUrl = driver.findElement(By.xpath(targetXpath)).getAttribute("src");
-        targetWebtoon.setThumbnail(changeThumbnailUrl);
+        targetWebtoon.setThumbnailUrl(changeThumbnailUrl);
         // Crawling 해서 가져오는 것들을 따로 만들어서 가져오기
         // Crawling service 를 만들어서 service 통해서 가져오기
 

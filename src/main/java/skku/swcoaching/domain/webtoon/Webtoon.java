@@ -22,7 +22,7 @@ public class Webtoon {
     private Long id;
 
     private String title; // 웹툰 제목
-    private String thumbnail; // 이미지가 저장된 url (계속 바뀔 수도 있음)
+    private String thumbnailUrl; // 이미지가 저장된 url (계속 바뀔 수도 있음)
     private String writer; // 웹툰 작가
     private DayOfWeek updateDate; // 업데이트 요일
     private String platform; // 플랫폼
@@ -38,10 +38,10 @@ public class Webtoon {
         tags.add(tag);
     }
 
-    public Webtoon(String title, String thumbnail, String writer, DayOfWeek updateDate, String platform, String url, List<Tag> tags){
+    public Webtoon(String title, String thumbnailUrl, String writer, DayOfWeek updateDate, String platform, String url, List<Tag> tags){
         Webtoon webtoon = new Webtoon();
         webtoon.setTitle(title);
-        webtoon.setThumbnail(thumbnail);
+        webtoon.setThumbnailUrl(thumbnailUrl);
         webtoon.setWriter(writer);
         webtoon.setUpdateDate(updateDate);
         webtoon.setPlatform(platform);

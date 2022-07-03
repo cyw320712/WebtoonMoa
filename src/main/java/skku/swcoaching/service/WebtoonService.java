@@ -34,7 +34,7 @@ public class WebtoonService {
         // 객체가 바꼈을 때 암묵적으로 mapping 해주면 오류를 찾기 힘들 수 있음.
         findWebtoon.setTitle(webtoonDto.getTitle());
         findWebtoon.setWriter(webtoonDto.getWriter());
-        findWebtoon.setThumbnail(webtoonDto.getThumbnail());
+        findWebtoon.setThumbnailUrl(webtoonDto.getThumbnailUrl());
         findWebtoon.setPlatform(webtoonDto.getPlatform());
         findWebtoon.setUrl(webtoonDto.getUrl());
         
@@ -57,5 +57,6 @@ public class WebtoonService {
     public List<Webtoon> searchWebtoonForConditions(WebtoonSearch webtoonSearch){
         return webtoonRepository.findByConditions(webtoonSearch);
     }
+
 
 }
