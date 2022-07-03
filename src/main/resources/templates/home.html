@@ -17,13 +17,20 @@
             <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
                 <div class = "btn-group-sm mr-2" role="group" aria-label="First group">
                     요일:
-                    <span class="btn btn-secondary btn-group-sm">월</span>
-                    <span class="btn btn-secondary small">화</span>
-                    <span class="btn btn-secondary btn-sm">수</span>
-                    <span class="btn btn-secondary">목</span>
-                    <span class="btn btn-secondary">금</span>
-                    <span class="btn btn-secondary">토</span>
-                    <span class="btn btn-secondary">일</span>
+                    <button th:if="${dayOfWeek != 1}" class="btn btn-secondary" type="button" onclick="location.href='/1'">월</button>
+                    <button th:if="${dayOfWeek == 1}" class="btn btn-secondary btn-danger" type="button" onclick="location.href='/1'">월</button>
+                    <button th:if="${dayOfWeek != 2}" class="btn btn-secondary" type="button" onclick="location.href='/2'">화</button>
+                    <button th:if="${dayOfWeek == 2}" class="btn btn-secondary btn-danger" type="button" onclick="location.href='/2'">화</button>
+                    <button th:if="${dayOfWeek != 3}" class="btn btn-secondary" type="button" onclick="location.href='/3'">수</button>
+                    <button th:if="${dayOfWeek == 3}" class="btn btn-secondary btn-danger" type="button" onclick="location.href='/3'">수</button>
+                    <button th:if="${dayOfWeek != 4}" class="btn btn-secondary" type="button" onclick="location.href='/4'">목</button>
+                    <button th:if="${dayOfWeek == 4}" class="btn btn-secondary btn-danger" type="button" onclick="location.href='/4'">목</button>
+                    <button th:if="${dayOfWeek != 5}" class="btn btn-secondary" type="button" onclick="location.href='/5'">금</button>
+                    <button th:if="${dayOfWeek == 5}" class="btn btn-secondary btn-danger" type="button" onclick="location.href='/5'">금</button>
+                    <button th:if="${dayOfWeek != 6}" class="btn btn-secondary" type="button" onclick="location.href='/6'">토</button>
+                    <button th:if="${dayOfWeek == 6}" class="btn btn-secondary btn-danger" type="button" onclick="location.href='/6'">토</button>
+                    <button th:if="${dayOfWeek != 7}" class="btn btn-secondary" type="button" onclick="location.href='/7'">일</button>
+                    <button th:if="${dayOfWeek == 7}" class="btn btn-secondary btn-danger" type="button" onclick="location.href='/7'">일</button>
                 </div>
             </div>
             <div class="form-group mx-sm-1 mb-2 justify-content-between">

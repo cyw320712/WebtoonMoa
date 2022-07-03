@@ -27,8 +27,12 @@ public class HomeController {
     public String home(Model model){
         LocalDate today = LocalDate.now();
         DayOfWeek todayOfWeek = today.getDayOfWeek();
+
+        log.info(todayOfWeek.toString());
+
         List<Webtoon> webtoons = webtoonService.searchWebtoonForToday(todayOfWeek, 0);
         WebtoonSearch webtoonSearch = new WebtoonSearch();
+        model.addAttribute("dayOfWeek", todayOfWeek.getValue());
         model.addAttribute("webtoonSearch", webtoonSearch);
         model.addAttribute("webtoons", webtoons);
 
@@ -48,15 +52,16 @@ public class HomeController {
         return "home";
     }
 
-    @PostMapping("/{page}")
+    @GetMapping("/{dayOfWeek}")
     public String webtoonList(
-            @ModelAttribute("webtoonSearch") WebtoonSearch webtoonSearch,
-            @PathVariable("id") int page,
+            @PathVariable("dayOfWeek") int dayOfWeek,
             Model model)
     {
-        log.info(webtoonSearch.getKeyword());
-
-        List<Webtoon> webtoons = webtoonService.searchWebtoonForConditions(webtoonSearch);
+        DayOfWeek todayOfWeek = DayOfWeek.of(dayOfWeek);
+        List<Webtoon> webtoons = webtoonService.searchWebtoonForToday(todayOfWeek, 0);
+        WebtoonSearch webtoonSearch = new WebtoonSearch();
+        model.addAttribute("webtoonSearch", webtoonSearch);
+        model.addAttribute("dayOfWeek", dayOfWeek);
         model.addAttribute("webtoons", webtoons);
 
         return "home";
