@@ -13,7 +13,7 @@
     <div th:replace="fragments/bodyHeader :: bodyHeader" />
 
     <div class = "jumbotron">
-        <form th:object="${webtoonSearch}" class="flex-column">
+        <form th:object="${webtoonSearch}" class="flex-column" method="post" action="">
             <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
                 <div class = "btn-group-sm mr-2" role="group" aria-label="First group">
                     요일:
@@ -36,8 +36,8 @@
                 <input type="checkbox" class="btn btn-secondary">드라마
             </div>
             <div class="flex-row">
-                <input type="text" class="form-text" id="search_input">
-                <button type="submit" class="btn btn-primary mb-2">검색</button>
+                <input type="text" class="form-text" th:field="*{subString}">
+                <button type="submit" class="btn btn-primary mb-2" name="submit">검색</button>
             </div>
         </form>
     </div>
