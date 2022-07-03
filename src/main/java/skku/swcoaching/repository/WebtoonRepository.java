@@ -28,19 +28,19 @@ public class WebtoonRepository {
         // 검색어와 태그 등의 조건을 사용한 웹툰 탐색
 
         // 먼저 해당 SubString 을 포함하는 Webtoon 가져오기 (없으면 ""일테니까 괜찮다)
-        List<Webtoon> webtoons = em.createQuery("select w from Webtoon w where w.title like :subString", Webtoon.class)
+        List<Webtoon> webtoons = em.createQuery("select w from Webtoon w where w.title like CONCAT('%', :subString, '%')", Webtoon.class)
                 .setParameter("subString", webtoonSearch.getSubString())
                 .getResultList();
 
-        // 이후 지정된 Tag 들을 포함하는지 여부를
-        List<Webtoon> ResultList = new ArrayList<>();
-        for (Webtoon webtoon : webtoons){
-            if(webtoon.getTags().contains(webtoonSearch.getTags())){
-                ResultList.add(webtoon);
-            }
-        }
+//        // 이후 지정된 Tag 들을 포함하는지 여부를
+//        List<Webtoon> ResultList = new ArrayList<>();
+//        for (Webtoon webtoon : webtoons){
+//            if(webtoon.getTags().contains(webtoonSearch.getTags())){
+//                ResultList.add(webtoon);
+//            }
+//        }
 
-        return ResultList;
+        return webtoons;
     }
 
     public List<Webtoon> findDay(DayOfWeek day, int start){
