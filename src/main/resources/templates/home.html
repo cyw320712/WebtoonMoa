@@ -1,10 +1,67 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>hello</title>
+<head th:replace="fragments/header :: header">
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src=""></script>
 </head>
+
 <body>
-<h1>Hello world</h1>
+
+<div class="container">
+
+    <div th:replace="fragments/bodyHeader :: bodyHeader" />
+
+    <div class = "jumbotron">
+        <form th:object="${webtoonSearch}" class="flex-column">
+            <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+                <div class = "btn-group-sm mr-2" role="group" aria-label="First group">
+                    요일:
+                    <span class="btn btn-secondary btn-group-sm">월</span>
+                    <span class="btn btn-secondary small">화</span>
+                    <span class="btn btn-secondary btn-sm">수</span>
+                    <span class="btn btn-secondary">목</span>
+                    <span class="btn btn-secondary">금</span>
+                    <span class="btn btn-secondary">토</span>
+                    <span class="btn btn-secondary">일</span>
+                </div>
+            </div>
+            <div class="form-group mx-sm-1 mb-2 justify-content-between">
+                태그:
+                <input type="checkbox" class="btn btn-secondary" value="">판타지
+                <input type="checkbox" class="btn btn-secondary">로맨스
+                <input type="checkbox" class="btn btn-secondary">무협
+                <input type="checkbox" class="btn btn-secondary">일상
+                <input type="checkbox" class="btn btn-secondary">액션
+                <input type="checkbox" class="btn btn-secondary">드라마
+            </div>
+            <div class="flex-row">
+                <input type="text" class="form-text" id="search_input">
+                <button type="submit" class="btn btn-primary mb-2">검색</button>
+            </div>
+        </form>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>썸네일</th>
+            <th>제목</th>
+            <th>작가</th>
+            <th>링크</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="webtoon: ${webtoons}">
+            <td><img th:src="${webtoon.thumbnailUrl}"/></td>
+            <td th:text="${webtoon.title}"></td>
+            <td th:text="${webtoon.writer}"></td>
+            <td th:text="${webtoon.url}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div th:replace="fragments/footer :: footer" />
+
+</div> <!-- /container -->
+
 </body>
 </html>
