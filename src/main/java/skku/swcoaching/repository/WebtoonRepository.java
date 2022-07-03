@@ -2,6 +2,7 @@ package skku.swcoaching.repository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import skku.swcoaching.domain.webtoon.Tag;
 import skku.swcoaching.domain.webtoon.Webtoon;
 import skku.swcoaching.domain.webtoon.WebtoonSearch;
 
@@ -32,15 +33,22 @@ public class WebtoonRepository {
                 .setParameter("subString", webtoonSearch.getKeyword())
                 .getResultList();
 
-//        // 이후 지정된 Tag 들을 포함하는지 여부를
-//        List<Webtoon> ResultList = new ArrayList<>();
-//        for (Webtoon webtoon : webtoons){
-//            if(webtoon.getTags().contains(webtoonSearch.getTags())){
-//                ResultList.add(webtoon);
-//            }
-//        }
+        // 이후 지정된 Tag 들을 포함하는지 여부를
+        List<Webtoon> resultList = new ArrayList<>();
+        List<Tag> requestedTagList = webtoonSearch.getTags();
 
-        return webtoons;
+        for (Webtoon webtoon : webtoons){
+            if(isContains(webtoon, requestedTagList)){
+                resultList.add(webtoon);
+            }
+        }
+
+        return resultList;
+    }
+
+    private boolean isContains(Webtoon webtoon, List<Tag> requestedTagList) {
+        List<Tag> webtoonTagList = webtoon.getTags();
+        return webtoonTagList.containsAll(requestedTagList);
     }
 
     public List<Webtoon> findDay(DayOfWeek day, int start){

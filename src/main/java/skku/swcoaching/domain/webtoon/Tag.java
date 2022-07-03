@@ -23,12 +23,22 @@ public class Tag {
         this.name = name;
     }
 
+    // tag 비교를 위한 contain 메소드 사용을 위해 equals 메소드 구현
+    @Override
+    public boolean equals(Object object){
+        Tag tag = (Tag) object;
+
+        if (tag.getName().equals(this.name)){
+            return true;
+        }
+
+        return false;
+    }
+
     @ManyToMany
     @JoinTable(name = "tag_webtoon",
         joinColumns = @JoinColumn(name = "tag_id"),
         inverseJoinColumns = @JoinColumn(name = "webtoon_id")
     )
     private List<Webtoon> webtoons = new ArrayList<>();
-    // 꼭 추가해야되는 필드인지 여쭤보기..
-
 }
