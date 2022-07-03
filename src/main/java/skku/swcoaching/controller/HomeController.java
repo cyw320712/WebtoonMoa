@@ -40,7 +40,7 @@ public class HomeController {
             @ModelAttribute("webtoonSearch") WebtoonSearch webtoonSearch,
             Model model)
     {
-        log.info(webtoonSearch.getSubString());
+        log.info(webtoonSearch.getKeyword());
 
         List<Webtoon> webtoons = webtoonService.searchWebtoonForConditions(webtoonSearch);
         model.addAttribute("webtoons", webtoons);
@@ -54,7 +54,7 @@ public class HomeController {
             @PathVariable("id") int page,
             Model model)
     {
-        log.info(webtoonSearch.getSubString());
+        log.info(webtoonSearch.getKeyword());
 
         List<Webtoon> webtoons = webtoonService.searchWebtoonForConditions(webtoonSearch);
         model.addAttribute("webtoons", webtoons);

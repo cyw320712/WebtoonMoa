@@ -8,7 +8,7 @@ import java.util.List;
 @Getter @Setter
 public class WebtoonSearch {
 
-    private String subString;
+    private String keyword;
     private List<Tag> tags;
 
 }

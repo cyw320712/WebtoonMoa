@@ -29,7 +29,7 @@ public class WebtoonRepository {
 
         // 먼저 해당 SubString 을 포함하는 Webtoon 가져오기 (없으면 ""일테니까 괜찮다)
         List<Webtoon> webtoons = em.createQuery("select w from Webtoon w where w.title like CONCAT('%', :subString, '%')", Webtoon.class)
-                .setParameter("subString", webtoonSearch.getSubString())
+                .setParameter("subString", webtoonSearch.getKeyword())
                 .getResultList();
 
 //        // 이후 지정된 Tag 들을 포함하는지 여부를
