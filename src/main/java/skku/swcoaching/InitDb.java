@@ -11,7 +11,7 @@ import java.time.DayOfWeek;
 
 @Component
 @RequiredArgsConstructor
-public class initDb {
+public class InitDb {
 
     private final InitService initService;
 
@@ -22,12 +22,12 @@ public class initDb {
     }
 
     @Component
-    @Transactional
     @RequiredArgsConstructor
     static class InitService {
 
         private final EntityManager em;
 
+        @Transactional
         public void dbInit1(){
             Webtoon webtoon = new Webtoon();
             webtoon.setTitle("독립일기");
@@ -39,6 +39,7 @@ public class initDb {
             em.persist(webtoon);
         }
 
+        @Transactional
         public void dbInit2(){
             Webtoon webtoon = new Webtoon();
             webtoon.setTitle("판사 이한영");
