@@ -49,32 +49,32 @@ class CrawlingServiceTest {
         assertEquals("테스트", getCT.getName());
     }
 
-    @Test
-    public void postTest() throws Exception {
-        BoardService boardService = mock(BoardService.class);
-
-        when(boardService.findBoards(1))
-                .thenReturn(List.of(new Board()));
-
-        List<Board> boards = boardService.findBoards(1);
-
-        // Mocking
-        // DB 를 직접 가져오지말고 Mocking 해서 가져온 척 해서 처리를 하자
-        // SpringBootTest 는 통합 테스트에 가깝다
-        // UnitTest 에서는 Mock 을 사용해서 test 하자.
-        // 테스트 주도 개발 (구판이 자바)
-
-        for (Board board : boards) {
-            System.out.println(board.getId() + board.getTitle() + board.getAuthor());
-        }
-    }
+//    @Test
+//    public void postTest() throws Exception {
+//        BoardService boardService = mock(BoardService.class);
+//
+//        when(boardService.findBoards(1))
+//                .thenReturn(List.of(new Board()));
+//
+//        List<Board> boards = boardService.findBoards(1);
+//
+//        // Mocking
+//        // DB 를 직접 가져오지말고 Mocking 해서 가져온 척 해서 처리를 하자
+//        // SpringBootTest 는 통합 테스트에 가깝다
+//        // UnitTest 에서는 Mock 을 사용해서 test 하자.
+//        // 테스트 주도 개발 (구판이 자바)
+//
+//        for (Board board : boards) {
+//            System.out.println(board.getId() + board.getTitle() + board.getAuthor());
+//        }
+//    }
 
     private Webtoon createWebtoon(){
         Webtoon webtoon = new Webtoon();
         webtoon.setWriter("작가");
         webtoon.setPlatform("플랫폼");
         webtoon.setTitle("웹툰1");
-        webtoon.setThumbnail("localhost/image");
+        webtoon.setThumbnailUrl("localhost/image");
         webtoon.setUrl("localhost");
 
         LocalDate today = LocalDate.now();
